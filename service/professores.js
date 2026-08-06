@@ -1,14 +1,26 @@
-let professores = []
-let id = 1
+import express from 'express'
+import { criarProfessor, listar } from '../service/professores.js'
+const router = express.Router()
 
-function criarProfessor(nome, materia) {
-  const professor = { id: id++, nome, materia }
-  professores.push(professor)
-  return professor
-}
+router.post("/professor", (req, res) => {
+  try {
+    const { nome, materia } = req.body
+    const resultado = criarProfessor(nome, materia)
 
-function listar() {
-  return professores
-}
+    res.status(200).send({ message: resultado })
+  } catch (error) {
+    res.status(500).send({ message: error.message })
+  }
+})
 
-export { criarProfessor, listar }
+router.get("/professor", (req, res) => {
+  try {
+    const resultado = listar()
+
+    res.status(200).send({ message: resultado })
+  } catch (error) {
+    res.status(500).send({ message: error.message })
+  }
+})
+
+export default router

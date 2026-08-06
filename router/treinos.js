@@ -7,9 +7,7 @@ router.post("/treino", (req, res) => {
     const { nome, tipo } = req.body
     const resultado = criarTreino(nome, tipo)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }

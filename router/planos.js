@@ -7,9 +7,7 @@ router.post("/plano", (req, res) => {
     const { nome, preco } = req.body
     const resultado = criarPlano(nome, preco)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }

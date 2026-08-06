@@ -7,9 +7,7 @@ router.post("/matricula", (req, res) => {
     const { nome, curso } = req.body
     const resultado = matricular(nome, curso)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }
