@@ -1,5 +1,5 @@
 import express from 'express'
-import { matriculas } from '../router/matriculas.js'
+import { matricular, listar } from '../service/matriculas.js'
 const router = express.Router()
 
 router.post("/matricula", (req, res) => {
@@ -7,9 +7,7 @@ router.post("/matricula", (req, res) => {
     const { nome, curso } = req.body
     const resultado = matricular(nome, curso)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }
