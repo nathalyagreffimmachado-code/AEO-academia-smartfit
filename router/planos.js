@@ -1,5 +1,5 @@
 import express from 'express'
-import { planos } from '../service/plano.js'
+import { criarPlano, listar } from '../service/planos.js'
 const router = express.Router()
 
 router.post("/plano", (req, res) => {
@@ -7,9 +7,7 @@ router.post("/plano", (req, res) => {
     const { nome, preco } = req.body
     const resultado = criarPlano(nome, preco)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }
