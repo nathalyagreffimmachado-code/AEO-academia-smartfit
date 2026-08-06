@@ -1,5 +1,5 @@
 import express from 'express'
-import { matriculas } from '../router/matriculas.js'
+import { matricular, listar } from '../service/matriculas.js'
 const router = express.Router()
 
 router.post("/matricula", (req, res) => {

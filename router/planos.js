@@ -1,5 +1,5 @@
 import express from 'express'
-import { planos } from '../service/plano.js'
+import { criarPlano, listar } from '../service/planos.js'
 const router = express.Router()
 
 router.post("/plano", (req, res) => {
