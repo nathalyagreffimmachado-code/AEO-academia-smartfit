@@ -1,5 +1,5 @@
 import express from 'express'
-import { professos } from '../service/professor.js'
+import { criarProfessor, listar } from '../service/professores.js'
 const router = express.Router()
 
 router.post("/professor", (req, res) => {
@@ -7,9 +7,7 @@ router.post("/professor", (req, res) => {
     const { nome, materia } = req.body
     const resultado = criarProfessor(nome, materia)
 
-    res.status(200).send({
-      message: resultado
-    })
+    res.status(200).send({ message: resultado })
   } catch (error) {
     res.status(500).send({ message: error.message })
   }
