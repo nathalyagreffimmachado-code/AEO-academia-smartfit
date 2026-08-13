@@ -1,4 +1,4 @@
-import express from 'epress'
+import express from 'express'
 import matricula from './router/matriculas.js'
 import planos from './router/planos.js'
 import treinos from './router/treinos.js'

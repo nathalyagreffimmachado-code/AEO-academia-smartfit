@@ -1,3 +1,3 @@
-const matricula = []
+const matriculas = []
 
-export default matricula
+export default matriculas
