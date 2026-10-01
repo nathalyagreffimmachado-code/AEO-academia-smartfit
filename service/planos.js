@@ -1,20 +1,88 @@
-let planos = [
-  { id: 1, nome: "Plano Mensal", preco: 99.90 },
-  { id: 2, nome: "Plano Trimestral", preco: 259.90 },
-  { id: 3, nome: "Plano Semestral", preco: 469.90 },
-  { id: 4, nome: "Plano Anual", preco: 899.90 },
-  { id: 5, nome: "Plano Black (Ilimitado)", preco: 149.90 }
-]
-let id = 6
+import RepositoryPlanos from '../repository/planos.js'
 
-function criarPlano(nome, preco) {
-  const plano = { id: id++, nome, preco }
-  planos.push(plano)
-  return plano
+class ServicePlanos {
+
+    // Core - Regra de Negocio
+
+    async Buscar() {
+
+        return RepositoryPlanos.find()
+
+    }
+
+    async Detalhe(id) {
+
+        if (!id) {
+
+            throw new Error("Favor informar o ID")
+
+        }
+
+        const plano = await RepositoryPlanos.findById(id)
+
+        if (!plano) {
+
+            throw new Error(`ID ${id} do plano não encontrado`)
+
+        }
+
+        return plano
+
+    }
+
+    async Criar(nome, valor, duracao, descricao) {
+
+        if (!nome || !valor || !duracao || !descricao) {
+
+            throw new Error("Favor informar todos os dados")
+
+        }
+
+        const plano = await RepositoryPlanos.Create(
+            nome,
+            valor,
+            duracao,
+            descricao
+        )
+
+        return plano
+
+    }
+
+    async Alterar(id, nome, valor, duracao, descricao) {
+
+        if (!id || !nome || !valor || !duracao || !descricao) {
+
+            throw new Error("Favor informar os dados")
+
+        }
+
+        const planoAlterado = await RepositoryPlanos.Update(
+            id,
+            nome,
+            valor,
+            duracao,
+            descricao
+        )
+
+        return planoAlterado
+
+    }
+
+    async Deletar(id) {
+
+        if (!id) {
+
+            throw new Error("Favor informar o ID")
+
+        }
+
+        const plano = await RepositoryPlanos.Delete(id)
+
+        return plano
+
+    }
+
 }
 
-function listar() {
-  return planos
-}
-
-export { criarPlano, listar }
+export default new ServicePlanos()

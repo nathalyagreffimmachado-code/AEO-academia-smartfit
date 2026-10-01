@@ -1,19 +1,88 @@
-let treinos = [
-  { id: 1, nome: "Treino A - Peito e Tríceps", tipo: "Musculação" },
-  { id: 2, nome: "Treino B - Costas e Bíceps", tipo: "Musculação" },
-  { id: 3, nome: "WOD do Dia", tipo: "Crossfit" },
-  { id: 4, nome: "Treino de Resistência", tipo: "Natação" }
-]
-let id = 5
+import RepositoryTreinos from '../repository/treinos.js'
 
-function criarTreino(nome, tipo) {
-  const treino = { id: id++, nome, tipo }
-  treinos.push(treino)
-  return treino
+class ServiceTreinos {
+
+    // Core - Regra de Negocio
+
+    async Buscar() {
+
+        return RepositoryTreinos.find()
+
+    }
+
+    async Detalhe(id) {
+
+        if (!id) {
+
+            throw new Error("Favor informar o ID")
+
+        }
+
+        const treino = await RepositoryTreinos.findById(id)
+
+        if (!treino) {
+
+            throw new Error(`ID ${id} do treino não encontrado`)
+
+        }
+
+        return treino
+
+    }
+
+    async Criar(nome, objetivo, duracao, descricao) {
+
+        if (!nome || !objetivo || !duracao || !descricao) {
+
+            throw new Error("Favor informar todos os dados")
+
+        }
+
+        const treino = await RepositoryTreinos.Create(
+            nome,
+            objetivo,
+            duracao,
+            descricao
+        )
+
+        return treino
+
+    }
+
+    async Alterar(id, nome, objetivo, duracao, descricao) {
+
+        if (!id || !nome || !objetivo || !duracao || !descricao) {
+
+            throw new Error("Favor informar os dados")
+
+        }
+
+        const treinoAlterado = await RepositoryTreinos.Update(
+            id,
+            nome,
+            objetivo,
+            duracao,
+            descricao
+        )
+
+        return treinoAlterado
+
+    }
+
+    async Deletar(id) {
+
+        if (!id) {
+
+            throw new Error("Favor informar o ID")
+
+        }
+
+        const treino = await RepositoryTreinos.Delete(id)
+
+        return treino
+
+    }
+
 }
 
-function listar() {
-  return treinos
-}
-
-export { criarTreino, listar }
+export default new ServiceTreinos()

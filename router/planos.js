@@ -1,26 +1,16 @@
 import express from 'express'
-import { criarPlano, listar } from '../service/planos.js'
+import ControllerPlanos from '../controller/planos.js'
+
 const router = express.Router()
 
-router.post("/plano", (req, res) => {
-  try {
-    const { nome, preco } = req.body
-    const resultado = criarPlano(nome, preco)
+router.get('/planos', ControllerPlanos.Buscar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.get('/planos/:id', ControllerPlanos.Detalhe)
 
-router.get("/plano", (req, res) => {
-  try {
-    const resultado = listar()
+router.post('/planos', ControllerPlanos.Criar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.put('/planos/:id', ControllerPlanos.Alterar)
+
+router.delete('/planos/:id', ControllerPlanos.Deletar)
 
 export default router

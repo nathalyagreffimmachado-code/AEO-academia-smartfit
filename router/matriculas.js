@@ -1,26 +1,16 @@
 import express from 'express'
-import { matricular, listar } from '../service/matriculas.js'
+import ControllerMatriculas from '../controller/matriculas.js'
+
 const router = express.Router()
 
-router.post("/matricula", (req, res) => {
-  try {
-    const { nome, curso } = req.body
-    const resultado = matricular(nome, curso)
+router.get('/matriculas', ControllerMatriculas.Buscar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.get('/matriculas/:id', ControllerMatriculas.Detalhe)
 
-router.get("/matricula", (req, res) => {
-  try {
-    const resultado = listar()
+router.post('/matriculas', ControllerMatriculas.Criar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.put('/matriculas/:id', ControllerMatriculas.Alterar)
+
+router.delete('/matriculas/:id', ControllerMatriculas.Deletar)
 
 export default router

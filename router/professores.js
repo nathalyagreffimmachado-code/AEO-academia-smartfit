@@ -1,26 +1,16 @@
 import express from 'express'
-import { criarProfessor, listar } from '../service/professores.js'
+import ControllerProfessores from '../controller/professores.js'
+
 const router = express.Router()
 
-router.post("/professor", (req, res) => {
-  try {
-    const { nome, materia } = req.body
-    const resultado = criarProfessor(nome, materia)
+router.get('/professores', ControllerProfessores.Buscar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.get('/professores/:id', ControllerProfessores.Detalhe)
 
-router.get("/professor", (req, res) => {
-  try {
-    const resultado = listar()
+router.post('/professores', ControllerProfessores.Criar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.put('/professores/:id', ControllerProfessores.Alterar)
+
+router.delete('/professores/:id', ControllerProfessores.Deletar)
 
 export default router

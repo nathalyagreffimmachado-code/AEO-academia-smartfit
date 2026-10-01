@@ -1,18 +1,35 @@
 import express from 'express'
-import matricula from './router/matriculas.js'
+import academia from './router/academia.js'
+import professores from './router/professores.js'
 import planos from './router/planos.js'
 import treinos from './router/treinos.js'
-import professores from './router/professores.js'
+import matriculas from './router/matriculas.js'
+
+import database from './config/database.js'
 
 const app = express()
+
 app.use(express.json())
 
-app.use(matricula)
-app.use(planos)
-app.use(treinos)
-app.use(professores)
+app.use("/api/v1/academia", academia)
+app.use("/api/v1/professores", professores)
+app.use("/api/v1/planos", planos)
+app.use("/api/v1/treinos", treinos)
+app.use("/api/v1/matriculas", matriculas)
 
-const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`)
-})
+database.db
+    .sync({ force: false })
+    .then(() => {
+
+        app.listen(3000, () => {
+
+            console.log("Servidor Porta 3000")
+
+        })
+
+    })
+    .catch((e) => {
+
+        console.log(e)
+
+    })

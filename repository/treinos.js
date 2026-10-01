@@ -1,10 +1,10 @@
-import planos from '../model/planos.js'
+import treinos from '../model/treinos.js'
  
-class RepositoryPlanos {
+class RepositoryTreinos {
  
     async find() {
  
-        const registros = await planos.findAll()
+        const registros = await treinos.findAll()
  
         return registros
  
@@ -12,7 +12,7 @@ class RepositoryPlanos {
  
     async findById(id) {
  
-        const registro = await planos.findByPk(id)
+        const registro = await treinos.findByPk(id)
  
         return registro
  
@@ -20,7 +20,7 @@ class RepositoryPlanos {
  
     async Create(dados) {
  
-        const registroCreate = await planos.create(dados)
+        const registroCreate = await treinos.create(dados)
  
         return registroCreate
  
@@ -28,11 +28,11 @@ class RepositoryPlanos {
  
     async Update(id, dados) {
  
-        const registroAlterar = await planos.findByPk(id)
+        const registroAlterar = await treinos.findByPk(id)
  
         if (!registroAlterar) {
  
-            throw new Error("Plano não encontrado(a)")
+            throw new Error("Treino não encontrado(a)")
  
         }
  
@@ -44,11 +44,11 @@ class RepositoryPlanos {
  
     async Delete(id) {
  
-        const registroDeletar = await planos.findByPk(id)
+        const registroDeletar = await treinos.findByPk(id)
  
         if (!registroDeletar) {
  
-            throw new Error("Plano não encontrado(a)")
+            throw new Error("Treino não encontrado(a)")
  
         }
  
@@ -60,5 +60,5 @@ class RepositoryPlanos {
  
 }
  
-export default new RepositoryPlanos()
+export default new RepositoryTreinos()
  
