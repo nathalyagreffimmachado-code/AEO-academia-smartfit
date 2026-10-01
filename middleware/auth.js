@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-const segredo = 'amoofefe'
+const segredo = 'xxx'
 
 export default async function authMiddleware(req,res,next) {
     console.log("aqui")

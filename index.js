@@ -1,5 +1,4 @@
 import express from 'express'
-
 import academia from './router/academia.js'
 import professores from './router/professores.js'
 import planos from './router/planos.js'
