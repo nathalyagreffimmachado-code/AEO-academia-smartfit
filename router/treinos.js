@@ -1,26 +1,16 @@
 import express from 'express'
-import { criarTreino, listar } from '../service/treinos.js'
+import ControllerTreinos from '../controller/treinos.js'
+
 const router = express.Router()
 
-router.post("/treino", (req, res) => {
-  try {
-    const { nome, tipo } = req.body
-    const resultado = criarTreino(nome, tipo)
+router.get('/treinos', ControllerTreinos.Buscar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.get('/treinos/:id', ControllerTreinos.Detalhe)
 
-router.get("/treino", (req, res) => {
-  try {
-    const resultado = listar()
+router.post('/treinos', ControllerTreinos.Criar)
 
-    res.status(200).send({ message: resultado })
-  } catch (error) {
-    res.status(500).send({ message: error.message })
-  }
-})
+router.put('/treinos/:id', ControllerTreinos.Alterar)
+
+router.delete('/treinos/:id', ControllerTreinos.Deletar)
 
 export default router
