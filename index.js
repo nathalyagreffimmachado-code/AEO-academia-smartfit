@@ -18,7 +18,7 @@ app.use("/api/v1/treinos", treinos)
 app.use("/api/v1/matriculas", matriculas)
 
 database.db
-    .sync({ force: false })
+    .sync({ force: true })
     .then(() => {
 
         app.listen(3000, () => {

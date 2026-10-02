@@ -1,31 +1,37 @@
-import { DataTypes } from 'sequelize'
-import database from '../config/database.js'
+import database from "../config/database.js";
 
-const matriculas = database.define('matriculas', {
+class Matriculas {
 
-    aluno: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+    constructor() {
 
-    planoId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
+        this.model = database.db.define("academia", {
 
-    dataInicio: {
-        type: DataTypes.DATEONLY
-    },
+            id: {
+                type: database.db.Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
 
-    status: {
-        type: DataTypes.STRING,
-        defaultValue: 'ativa'
-    },
+            nome: {
+                type: database.db.Sequelize.STRING
+            },
 
-    academiaId: {
-        type: DataTypes.INTEGER
+            endereco: {
+                type: database.db.Sequelize.STRING
+            },
+
+            telefone: {
+                type: database.db.Sequelize.STRING
+            },
+
+            email: {
+                type: database.db.Sequelize.STRING
+            }
+
+        })
+
     }
 
-})
+}
 
-export default matriculas
+export default new Matriculas().model

@@ -1,29 +1,34 @@
-import { DataTypes } from 'sequelize'
-import database from '../config/database.js'
+import database from "../config/database.js";
 
-const treinos = database.define('treinos', {
+class Treinos {
 
-    nome: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+    constructor() {
 
-    descricao: {
-        type: DataTypes.STRING
-    },
+        this.model = database.db.define("academia", {
 
-    nivel: {
-        type: DataTypes.STRING
-    },
+            id: {
+                type: database.db.Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
 
-    professorId: {
-        type: DataTypes.INTEGER
-    },
+            treinodebraco: {
+                type: database.db.Sequelize.STRING
+            },
 
-    academiaId: {
-        type: DataTypes.INTEGER
+            treinodepernas: {
+                type: database.db.Sequelize.STRING
+            },
+
+            treinodecostas: {
+                type: database.db.Sequelize.STRING
+            },
+
+        
+        })
+
     }
 
-})
+}
 
-export default treinos
+export default new Treinos().model
