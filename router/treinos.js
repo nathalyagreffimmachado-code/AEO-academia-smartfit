@@ -1,9 +1,9 @@
 import express from 'express'
 import ControllerTreinos from '../controller/treinos.js'
-
+import authMiddleware from '../middleware/auth.js'
 const router = express.Router()
 
-router.get('/treinos', ControllerTreinos.Buscar)
+router.get('/treinos',authMiddleware, ControllerTreinos.Buscar)
 
 router.get('/treinos/:id', ControllerTreinos.Detalhe)
 
