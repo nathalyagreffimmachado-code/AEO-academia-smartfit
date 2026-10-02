@@ -8,7 +8,7 @@ class ControllerMatriculas {
 
             const matriculas = ServiceMatriculas.Buscar()
 
-            res.send({ mensagem: matriculas })
+            req.send({ mensagem: matriculas })
 
         } catch (error) {
 

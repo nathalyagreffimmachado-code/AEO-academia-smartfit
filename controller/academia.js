@@ -7,7 +7,7 @@ class ControllerAcademia {
             const academias = await ServiceAcademia.Buscar()
             res.status(200).json(academias)
         } catch (error) {
-            res.status(500).json({ erro: error.message })
+            req.status(500).json({ erro: error.message })
         }
     }
 

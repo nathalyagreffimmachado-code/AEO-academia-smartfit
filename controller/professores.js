@@ -8,7 +8,7 @@ class ControllerProfessores {
 
             const professores = ServiceProfessores.Buscar()
 
-            res.send({ mensagem: professores })
+            req.send({ mensagem: professores })
 
         } catch (error) {
 
