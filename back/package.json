@@ -1,0 +1,31 @@
+{
+  "name": "aeo-academia-smartfit",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/nathalyagreffimmachado-code/AEO-academia-smartfit#readme",
+  "bugs": {
+    "url": "https://github.com/nathalyagreffimmachado-code/AEO-academia-smartfit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathalyagreffimmachado-code/AEO-academia-smartfit.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.4",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
