@@ -1,12 +1,13 @@
+import professores from '../model/professores.js'
 import ServiceProfessores from '../service/professores.js'
 
 class ControllerProfessores {
 
     async Buscar(req, res) {
         try {
-            const professor = await ServiceProfessor.Buscar()
+            const Professores = await ServiceProfessores.Buscar()
 
-            res.status(200).send({ professor })
+            res.status(200).send({ professores })
         } catch (error) {
             res.status(500).send({ message: error.message })
         }
@@ -16,9 +17,9 @@ class ControllerProfessores {
         try {
             // session === usuario logado
             const id = req.session.id
-            const professor = await ServiceProfessor.Detalhe(id)
+            const professores = await ServiceProfessores.Detalhe(id)
 
-            res.status(200).send({ professor })
+            res.status(200).send({ professores })
         } catch (error) {
             res.status(500).send({ message: error.message })
         }
@@ -28,7 +29,7 @@ class ControllerProfessores {
         try {
             const { nome, email, matricula } = req.body
 
-            await ServiceUser.Criar(nome, email, matricula)
+            await ServiceProfessores.Criar(nome, email, matricula)
 
             res.status(201).send({ message: "Professor criado com sucesso!" })
         } catch (error) {
@@ -41,7 +42,7 @@ class ControllerProfessores {
             const id = req.session.id
             const { nome, email, matricula } = req.body
 
-            await ServiceUser.Alterar(id, nome, email, matricula)
+            await ServiceProfessores.Alterar(id, nome, email, matricula)
         
             res.status(200).send({ message: "Professor alterado!" })
         } catch (error) {
@@ -53,7 +54,7 @@ class ControllerProfessores {
         try {
             const id = req.session.id
 
-            await ServiceProfessor.Deletar(id)
+            await ServiceProfessores.Deletar(id)
 
             res.status(204).send({ message: "Professor deletado!" })
         } catch (error) {
@@ -65,7 +66,7 @@ class ControllerProfessores {
         try {
             const { nome, email, matricula } = req.body
     
-            const token = await ServiceProfessor.Login(nome, email, matricula)
+            const token = await ServiceProfessores.Login(nome, email, matricula)
 
             res.status(200).send({ token })
         } catch (error) {

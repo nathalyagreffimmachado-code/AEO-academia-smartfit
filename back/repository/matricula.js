@@ -1,45 +1,46 @@
+
 import Matricula from "../model/matricula.js"
 
 class RepositoryMatricula {
 
     async Buscar() {
-        return User.findAll()
+        return Matricula.findAll()
     }
 
     async Detalhe(id) {
-        return User.findByPk(id)
+        return Matricula.findByPk(id)
     }
 
-    async BuscarEmail(email) {
-        return User.findOne({ where: { email } })
+    async BuscarAluno(nome) {
+        return Matricula.findOne({ where: { nome } })
     }
 
-    async Criar(name, email, password) {
-        await User.create({ name, email, password })
+    async Criar(email, senha, nome) {
+        await Matricula.create({ email, senha, nome })
     }
 
-    async Alterar(id, name, email, password) {
-        const user = await User.findByPk(id)
-        
-        if(!user) {
-            throw new Error("Usuário não encontrado")
+    async Alterar(id, email, senha, nome ) {
+        const matricula = await Matricula.findByPk(id)
+
+        if (!matricula) {
+            throw new Error("Matrícula não encontrada")
         }
 
-        user.name = name || user.name
-        user.email = email || user.email
-        user.password = password || user.password
+        matricula.email = email || matricula.email
+        matricula.senha = senha || matricula.senha
+        matricula.nome = nome || matricula.nome
 
-        await user.save()
+        await matricula.save()
     }
 
     async Deletar(id) {
-        const user = await User.findByPk(id)
-        
-        if(!user) {
-            throw new Error("Usuário não encontrado")
+        const matricula = await Matricula.findByPk(id)
+
+        if (!matricula) {
+            throw new Error("Matrícula não encontrada")
         }
 
-        await user.destroy()
+        await matricula.destroy()
     }
 
 }
