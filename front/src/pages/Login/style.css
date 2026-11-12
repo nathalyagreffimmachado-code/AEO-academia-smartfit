@@ -1,0 +1,126 @@
+/* ===== Login ===== */
+.login-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: #111111;
+  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  padding: 40px 34px;
+  border-radius: 20px;
+  border-top: 6px solid #ffc20e;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.form-box h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 26px;
+}
+
+.form-box h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: #ffc20e;
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+.form-box label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3a3a3a;
+  margin-bottom: 6px;
+}
+
+.form-box input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #111111;
+  background: #ffffff;
+  padding: 13px 16px;
+  margin-bottom: 18px;
+  border: 2px solid #e6e6e6;
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-box input::placeholder { color: #9a9a9a; }
+
+.form-box input:focus {
+  outline: none;
+  border-color: #ffc20e;
+  box-shadow: 0 0 0 4px rgba(255, 194, 14, 0.25);
+}
+
+.form-box button {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111111;
+  background: #ffc20e;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.form-box button:hover {
+  background: #e6ab00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 194, 14, 0.4);
+}
+
+.form-box button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Mensagem de erro */
+.erro {
+  background: #fde3e1;
+  color: #d93025;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: -4px 0 16px;
+}
+
+/* Link de matrícula */
+.form-rodape {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777777;
+  margin-top: 20px;
+}
+
+.form-rodape a {
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid #ffc20e;
+}
+
+.form-rodape a:hover { background: #ffc20e; }
+
+@media (max-width: 480px) {
+  .form-box { padding: 30px 22px; }
+}

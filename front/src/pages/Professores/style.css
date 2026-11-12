@@ -1,80 +1,257 @@
-/* src/components/LoginForm.css */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-  }
-  
-  .login-form {
-    background: white;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  .login-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-  }
-  
-  .button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+/* ===== Página de Professores (estilo Smart Fit) ===== */
 
-  .back-button {
-    background-color: #8a8a8a;
-    color: rgb(2, 2, 2);
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+.professores-page {
+  background: #f5f5f5;
+  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111111;
+  min-height: 100vh;
+}
 
-  .back-button:hover {
-    background-color: #505050;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-  }
+.professores-page * { box-sizing: border-box; }
 
-  .signup {
-    color: #0056b3;
-    padding: 5px;
-  }
-  
-  .signup:hover {
-    background-color: #0056b3;
-    border-radius: 25px;
-    color: #FFF;
-  }
-  
+.professores-page .container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ----- Topo ----- */
+.professores-hero {
+  background: #111111;
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 0 110px;
+}
+
+.professores-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.professores-hero h1 span { color: #ffc20e; }
+
+.professores-hero p {
+  color: #cfcfcf;
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ----- Filtros ----- */
+.professores-lista { padding: 0 0 70px; margin-top: -50px; }
+
+.professores-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.filtro-btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111111;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  border-radius: 999px;
+  padding: 9px 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.filtro-btn:hover { border-color: #ffc20e; transform: translateY(-2px); }
+
+.filtro-btn.ativo {
+  background: #ffc20e;
+  border-color: #ffc20e;
+}
+
+/* ----- Busca ----- */
+.professores-busca {
+  max-width: 420px;
+  margin: 0 auto 24px;
+}
+
+.professores-busca input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 13px 20px;
+  border: 2px solid #e6e6e6;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.professores-busca input:focus {
+  outline: none;
+  border-color: #ffc20e;
+  box-shadow: 0 0 0 4px rgba(255, 194, 14, 0.25);
+}
+
+/* ----- Grade de cards ----- */
+.professores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 26px;
+}
+
+.card-professor {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0 24px 28px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* faixa amarela no topo do card, atrás da foto */
+.card-professor::before {
+  content: "";
+  display: block;
+  height: 90px;
+  background: #ffc20e;
+  margin: 0 -24px;
+}
+
+.card-professor:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.card-professor .foto {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: -60px auto 16px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  background: #e6e6e6;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.card-professor h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.card-professor .especialidade {
+  display: inline-block;
+  background: #111111;
+  color: #ffc20e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+.card-professor .descricao {
+  color: #777777;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 14px 0 0;
+}
+
+/* ----- Informações extras ----- */
+.card-professor .infos {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.card-professor .info strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111111;
+}
+
+.card-professor .info span {
+  font-size: 0.72rem;
+  color: #777777;
+  text-transform: uppercase;
+}
+
+/* ----- Botão ----- */
+.card-professor .btn-professor {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  color: #111111;
+  background: transparent;
+  border: 2px solid #111111;
+  border-radius: 999px;
+  padding: 11px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-professor .btn-professor:hover {
+  background: #111111;
+  color: #ffc20e;
+}
+
+/* ----- Redes do professor ----- */
+.card-professor .redes-prof {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.card-professor .redes-prof a {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111111;
+  background: #f5f5f5;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.card-professor .redes-prof a:hover {
+  background: #ffc20e;
+  transform: translateY(-2px);
+}
+
+/* ----- Estados ----- */
+.professores-carregando,
+.professores-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777777;
+  font-weight: 500;
+}
+
+/* ----- Celular ----- */
+@media (max-width: 720px) {
+  .professores-hero { padding: 56px 0 90px; }
+  .professores { grid-template-columns: 1fr; }
+}

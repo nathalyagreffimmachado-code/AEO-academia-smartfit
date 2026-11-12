@@ -1,80 +1,294 @@
-/* src/components/LoginForm.css */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-  }
-  
-  .login-form {
-    background: white;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  .login-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-  }
-  
-  .button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+/* ===== Página de Planos (estilo Smart Fit) ===== */
 
-  .back-button {
-    background-color: #8a8a8a;
-    color: rgb(2, 2, 2);
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+.planos-page {
+  background: #f5f5f5;
+  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111111;
+}
 
-  .back-button:hover {
-    background-color: #505050;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-  }
+.planos-page * { box-sizing: border-box; }
 
-  .signup {
-    color: #0056b3;
-    padding: 5px;
-  }
-  
-  .signup:hover {
-    background-color: #0056b3;
-    border-radius: 25px;
-    color: #FFF;
-  }
-  
+.planos-page .container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ----- Topo da página ----- */
+.planos-hero {
+  background: #111111;
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 0 110px;
+}
+
+.planos-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.planos-hero h1 span { color: #ffc20e; }
+
+.planos-hero p {
+  color: #cfcfcf;
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ----- Lista de planos (sobe por cima do topo preto) ----- */
+.planos-lista { padding: 0 0 70px; margin-top: -60px; }
+
+.planos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+  align-items: stretch;
+}
+
+/* ----- Card do plano ----- */
+.card-plano {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 36px 26px 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card-plano:hover {
+  transform: translateY(-8px);
+  border-color: #ffc20e;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.card-plano .selo {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffc20e;
+  color: #111111;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.card-plano .nivel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777777;
+  margin-bottom: 6px;
+}
+
+.card-plano h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.card-plano .duracao { font-size: 0.9rem; color: #777777; }
+
+.card-plano .preco {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 18px 0 4px;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.card-plano .preco .moeda { font-size: 1.1rem; font-weight: 700; }
+.card-plano .preco small { font-size: 0.9rem; font-weight: 500; color: #777777; }
+
+.card-plano .economia {
+  display: inline-block;
+  align-self: flex-start;
+  background: #d9f4e3;
+  color: #1fa34a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+/* ----- Benefícios ----- */
+.card-plano ul {
+  list-style: none;
+  margin: 22px 0 26px;
+  padding: 18px 0 0;
+  border-top: 1px solid #e6e6e6;
+  flex: 1;
+}
+
+.card-plano li {
+  position: relative;
+  padding: 7px 0 7px 28px;
+  font-size: 0.93rem;
+}
+
+.card-plano li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: #1fa34a;
+}
+
+.card-plano li.nao-incluso { color: #a0a0a0; text-decoration: line-through; }
+.card-plano li.nao-incluso::before { content: "✕"; color: #a0a0a0; }
+
+/* ----- Botão ----- */
+.card-plano .btn-plano {
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111111;
+  background: #ffc20e;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.card-plano .btn-plano:hover {
+  background: #e6ab00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 194, 14, 0.45);
+}
+
+/* ----- Plano em destaque (fundo preto) ----- */
+.card-plano.destaque {
+  background: #111111;
+  color: #ffffff;
+  border-color: #ffc20e;
+  transform: scale(1.03);
+}
+
+.card-plano.destaque:hover { transform: scale(1.03) translateY(-8px); }
+
+.card-plano.destaque .nivel,
+.card-plano.destaque .duracao,
+.card-plano.destaque .preco small { color: #bdbdbd; }
+
+.card-plano.destaque .preco { color: #ffc20e; }
+.card-plano.destaque ul { border-top-color: #3a3a3a; }
+.card-plano.destaque li::before { color: #ffc20e; }
+.card-plano.destaque li.nao-incluso { color: #777777; }
+.card-plano.destaque li.nao-incluso::before { color: #777777; }
+
+/* ----- Tabela comparativa ----- */
+.planos-comparativo { padding: 20px 0 70px; }
+
+.planos-comparativo h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.planos-comparativo h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #ffc20e;
+  border-radius: 999px;
+  margin: 12px auto 0;
+}
+
+.comparativo-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.planos-comparativo table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.planos-comparativo th {
+  background: #111111;
+  color: #ffc20e;
+  padding: 16px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.planos-comparativo th:first-child,
+.planos-comparativo td:first-child { text-align: left; }
+
+.planos-comparativo td {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 0.93rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.planos-comparativo td:first-child { font-weight: 600; }
+.planos-comparativo tr:hover td { background: #fffbea; }
+
+.planos-comparativo .sim { color: #1fa34a; font-weight: 800; }
+.planos-comparativo .nao { color: #a0a0a0; }
+
+/* ----- Perguntas frequentes ----- */
+.planos-faq { padding: 0 0 80px; }
+
+.planos-faq h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 28px;
+}
+
+.faq-item {
+  max-width: 760px;
+  margin: 0 auto 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  border-left: 5px solid #ffc20e;
+  padding: 18px 22px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.faq-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.faq-item p { font-size: 0.92rem; color: #777777; }
+
+/* ----- Estados ----- */
+.planos-carregando,
+.planos-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777777;
+  font-weight: 500;
+}
+
+/* ----- Celular ----- */
+@media (max-width: 720px) {
+  .planos-hero { padding: 56px 0 90px; }
+  .card-plano.destaque,
+  .card-plano.destaque:hover { transform: none; }
+}

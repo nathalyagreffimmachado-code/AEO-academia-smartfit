@@ -1,80 +1,273 @@
-/* src/components/LoginForm.css */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-  }
-  
-  .login-form {
-    background: white;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  .login-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-  }
-  
-  .button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+/* ===== Matrícula ===== */
+.matricula-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px;
+  background: #111111;
+  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+}
 
-  .back-button {
-    background-color: #8a8a8a;
-    color: rgb(2, 2, 2);
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+.matricula-box {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  padding: 40px 36px;
+  border-radius: 20px;
+  border-top: 6px solid #ffc20e;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
 
-  .back-button:hover {
-    background-color: #505050;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-  }
+.matricula-box h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #111111;
+}
 
-  .signup {
-    color: #0056b3;
-    padding: 5px;
-  }
-  
-  .signup:hover {
-    background-color: #0056b3;
-    border-radius: 25px;
-    color: #FFF;
-  }
-  
+.matricula-box h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: #ffc20e;
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+.matricula-box .subtitulo {
+  color: #777777;
+  font-size: 0.95rem;
+  margin: 12px 0 28px;
+}
+
+/* Títulos de cada etapa */
+.matricula-etapa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 28px 0 16px;
+}
+
+.matricula-etapa span {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffc20e;
+  color: #111111;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 50%;
+}
+
+/* Campos */
+.matricula-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
+
+.matricula-grid .campo-largo { grid-column: 1 / -1; }
+
+.matricula-box label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3a3a3a;
+  margin-bottom: 6px;
+}
+
+.matricula-box input,
+.matricula-box select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #111111;
+  background: #ffffff;
+  padding: 13px 16px;
+  margin-bottom: 18px;
+  border: 2px solid #e6e6e6;
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.matricula-box input::placeholder { color: #9a9a9a; }
+
+.matricula-box input:focus,
+.matricula-box select:focus {
+  outline: none;
+  border-color: #ffc20e;
+  box-shadow: 0 0 0 4px rgba(255, 194, 14, 0.25);
+}
+
+/* Escolha do plano (cards clicáveis) */
+.matricula-planos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.opcao-plano {
+  position: relative;
+  text-align: center;
+  padding: 18px 12px;
+  border: 2px solid #e6e6e6;
+  border-radius: 14px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.opcao-plano:hover { border-color: #ffc20e; transform: translateY(-3px); }
+
+.opcao-plano.selecionado {
+  border-color: #ffc20e;
+  background: #fff8dc;
+  box-shadow: 0 0 0 3px rgba(255, 194, 14, 0.35);
+}
+
+.opcao-plano strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111111;
+}
+
+.opcao-plano .valor {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #111111;
+  margin-top: 6px;
+}
+
+.opcao-plano small { color: #777777; font-size: 0.75rem; }
+
+.opcao-plano .tag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111111;
+  color: #ffc20e;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Forma de pagamento */
+.matricula-pagamento {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.opcao-pagamento {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  font-weight: 600;
+  padding: 12px;
+  border: 2px solid #e6e6e6;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.opcao-pagamento:hover { border-color: #ffc20e; }
+
+.opcao-pagamento.selecionado {
+  border-color: #ffc20e;
+  background: #ffc20e;
+  color: #111111;
+}
+
+/* Resumo da matrícula */
+.matricula-resumo {
+  background: #111111;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin: 28px 0 22px;
+}
+
+.matricula-resumo .linha {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+}
+
+.matricula-resumo .total {
+  border-top: 1px solid #3a3a3a;
+  margin-top: 8px;
+  padding-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffc20e;
+}
+
+/* Botão e mensagens */
+.matricula-box button[type="submit"] {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111111;
+  background: #ffc20e;
+  border: none;
+  border-radius: 999px;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.matricula-box button[type="submit"]:hover {
+  background: #e6ab00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 194, 14, 0.4);
+}
+
+.matricula-box button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.matricula-box .erro {
+  background: #fde3e1;
+  color: #d93025;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.matricula-box .sucesso {
+  background: #d9f4e3;
+  color: #1fa34a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+/* Celular */
+@media (max-width: 600px) {
+  .matricula-box { padding: 30px 20px; }
+  .matricula-grid { grid-template-columns: 1fr; }
+}
