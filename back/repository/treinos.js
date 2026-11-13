@@ -1,51 +1,53 @@
-import carro from '../model/carro.js'
+import treinos from '../model/treinos.js'
  
-class RepositoryCarro {
+class RepositoryTreinos {
    
     async find() {
-        const carros = await carro.findAll()
+        const treinos = await treinos.findAll()
  
-        return carros
+        return treinos
     }
  
     async findById(id) {
-        const carroDetalhe = await carro.findByPk(id)
+        const treinosDetalhe = await treinos.findByPk(id)
  
-        return carroDetalhe
+        return treinosDetalhe
     }
  
-    async Create(marca, ano) {
-        const carroCreate = await carro.create({ marca, ano})
+    async Create(nome, descricao, matricula, duracao) {
+        const treinosCreate = await treinos.create({ nome, descricao, matricula, duracao})
  
-        return carroCreate
+        return treinosCreate
     }
  
-    async Update(id, marca, ano) {
-        const carroAlterar = await carro.findByPk(id)
+    async Update(id, nome, descricao, matricula, duracao) {
+        const treinosAlterar = await treinos.findByPk(id)
  
-        if(!carroAlterar){
-            throw new Error("Carro não encontrado")
+        if(!treinosAlterar){
+            throw new Error("Treino não encontrado")
         }
  
-        carroAlterar.marca = marca
-        carroAlterar.ano = ano
+        treinosAlterar.nome = nome
+        treinosAlterar.descricao = descricao
+        treinosAlterar.matricula = matricula
+        treinosAlterar.duracao = duracao
  
-        await carroAlterar.save()
+        await treinosAlterar.save()
  
-        return carroAlterar
+        return treinosAlterar
     }
  
     async Delete(id) {
-        const carroDeletar = await carro.findByPk(id)
+        const treinosDeletar = await treinos.findByPk(id)
  
-        if(!carroDeletar){
-            throw new Error("Carro não encontrado")
+        if(!treinosDeletar){
+            throw new Error("Treino não encontrado")
         }
  
-        await carroDeletar.destroy()
+        await treinosDeletar.destroy()
  
-        return carroDeletar
+        return treinosDeletar
     }
 }
  
-export default new RepositoryCarro()
+export default new RepositoryTreinos()
