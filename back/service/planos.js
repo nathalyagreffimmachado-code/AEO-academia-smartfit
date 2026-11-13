@@ -1,15 +1,9 @@
-
-import ServicePlanosPlanos from '../service/planos.js'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-
-const SECRET = 'batata123'
-const SALT = 12
+import RepositoryPlanos from '../repository/planos.js'
 
 class ServicePlanos {
 
     async Buscar() {
-        return ServicePlanosPlanos.Buscar()
+        return ServicePlanos.Buscar()
     }
 
     async Detalhe(id) {
@@ -17,7 +11,7 @@ class ServicePlanos {
             throw new Error("Favor informar o ID")
         }
 
-        return ServicePlanosPlanos.Detalhe(id)
+        return ServicePlanos.Detalhe(id)
     }
 
     async Criar(descricao_plano, preco, tipo_do_plano) {
@@ -25,7 +19,7 @@ class ServicePlanos {
             throw new Error("Favor informar todos os parametros")
         }
 
-        await ServicePlanosPlanos.Criar(
+        await ServicePlanos.Criar(
             descricao_plano,
             preco,
             tipo_do_plano
@@ -37,7 +31,7 @@ class ServicePlanos {
             throw new Error("Favor informar todos os parametros")
         }
 
-        await ServicePlanosPlanos.Alterar(
+        await ServicePlanos.Alterar(
             id,
             descricao_plano,
             preco,
@@ -50,7 +44,7 @@ class ServicePlanos {
             throw new Error("Favor informar o ID")
         }
 
-        await ServicePlanosPlanos.Deletar(id)
+        await ServicePlanos.Deletar(id)
     }
 
 }

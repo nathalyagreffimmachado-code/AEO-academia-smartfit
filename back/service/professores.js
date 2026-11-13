@@ -1,10 +1,10 @@
 
-import ServiceProfessores from '../service/professores.js'
+import RepositoryProfessores from '../repository/professores.js'
 
 class ServiceProfessores {
 
     async Buscar() {
-        return ServiceProfessores.Buscar()
+        return RepositoryProfessores.Buscar()
     }
 
     async Detalhe(id) {
@@ -12,7 +12,7 @@ class ServiceProfessores {
             throw new Error("Favor informar o ID")
         }
 
-        return ServiceProfessores.Detalhe(id)
+        return RepositoryProfessores.Detalhe(id)
     }
 
     async Criar(nome, email, matricula) {
@@ -20,7 +20,7 @@ class ServiceProfessores {
             throw new Error("Favor informar todos os parametros")
         }
 
-        await ServiceProfessores.Criar(nome, email, matricula)
+        await RepositoryProfessores.Criar(nome, email, matricula)
     }
 
     async Alterar(id, nome, email, matricula) {
@@ -28,7 +28,7 @@ class ServiceProfessores {
             throw new Error("Favor informar todos os parametros")
         }
 
-        await ServiceProfessores.Alterar(id, nome, email, matricula)
+        await RepositoryProfessores.Alterar(id, nome, email, matricula)
     }
 
     async Deletar(id) {
@@ -36,7 +36,7 @@ class ServiceProfessores {
             throw new Error("Favor informar o ID")
         }
 
-        await ServiceProfessores.Deletar(id)
+        await RepositoryProfessores.Deletar(id)
     }
 
 }

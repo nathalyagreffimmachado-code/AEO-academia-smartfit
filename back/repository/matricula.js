@@ -19,7 +19,7 @@ class RepositoryMatricula {
         await Matricula.create({ email, senha, nome })
     }
 
-    async Alterar(id, email, senha, nome ) {
+    async Alterar(id, email, senha, nome) {
         const matricula = await Matricula.findByPk(id)
 
         if (!matricula) {

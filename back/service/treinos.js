@@ -1,42 +1,76 @@
 
-import ServiceTreinos from '../service/treinos.js'
+import ServiceMatricula from '../repository/matricula.js'
 
 class ServiceTreinos {
 
-    async Buscar() {
-        return ServiceTreinos.Buscar()
+    async Buscar(req, res) {
+        try {
+            const treinos = await ServiceTreinos.Buscar()
+
+            res.status(200).send({ treinos })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
+        }
     }
 
-    async Detalhe(id) {
-        if (!id) {
-            throw new Error("Favor informar o ID")
-        }
+    async Detalhe(req, res) {
+        try {
+            const id = req.params.id
+            const treinos = await ServiceTreinos.Detalhe(id)
 
-        return ServiceTreinos.Detalhe(id)
+            res.status(200).send({ treinos })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
+        }
     }
 
-    async Criar(nome, descricao, matricula, duracao) {
-        if (!nome || !descricao || !matricula || !duracao) {
-            throw new Error("Favor informar todos os parametros")
-        }
+    async Criar(req, res) {
+        try {
+            const { email, senha, nome } = req.body
 
-        await ServiceTreinos.Criar(nome, descricao, matricula, duracao)
+            await ServiceTreinos.Criar(email, senha, nome)
+
+            res.status(201).send({ message: "Treino criada com sucesso!" })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
+        }
     }
 
-    async Alterar(id, nome, descricao, matricula, duracao) {
-        if (!id || !nome || !descricao || !matricula || !duracao) {
-            throw new Error("Favor informar todos os parametros")
-        }
+    async Alterar(req, res) {
+        try {
+            const id = req.params.id
+            const { email, senha, nome } = req.body
 
-        await ServiceTreinos.Alterar(id, nome, descricao, matricula, duracao)
+            await ServiceTreinos.Alterar(id, email, senha, nome)
+
+            res.status(200).send({ message: "Treino alterada com sucesso!" })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
+        }
     }
 
-    async Deletar(id) {
-        if (!id) {
-            throw new Error("Favor informar o ID")
-        }
+    async Deletar(req, res) {
+        try {
+            const id = req.params.id
 
-        await ServiceTreinos.Deletar(id)
+            await ServiceTreinos.Deletar(id)
+
+            res.status(200).send({ message: "Treinos deletada com sucesso!" })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
+        }
+    }
+
+    async Login(req, res) {
+        try {
+            const { email, senha } = req.body
+
+            const token = await ServiceTreinos.Login(email, senha)
+
+            res.status(200).send({ token })
+        } catch (error) {
+            res.status(401).send({ message: error.message })
+        }
     }
 
 }

@@ -3,7 +3,7 @@ import professores from '../model/professores.js'
 class RepositoryProfessores {
    
     async find() {
-        const Professores = await professores.findAll()
+        const professores = await professores.findAll()
  
         return professores
     }
@@ -14,7 +14,7 @@ class RepositoryProfessores {
         return professoresDetalhe
     }
  
-    async Create(marca, ano) {
+    async Create(nome, email, matricula) {
         const professoresCreate = await professores.create({ nome, email, matricula})
  
         return professoresCreate
@@ -40,7 +40,7 @@ class RepositoryProfessores {
         const professoresDeletar = await professores.findByPk(id)
  
         if(!professoresDeletar){
-            throw new Error("Carro não encontrado")
+            throw new Error("Professor não encontrado")
         }
  
         await professoresDeletar.destroy()
