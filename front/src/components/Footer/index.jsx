@@ -6,7 +6,7 @@ export default function Footer (){
         <div className="footer-topo">
 
           <div className="footer-marca">
-            <span className="logo">Sua Academia</span>
+            <span className="logo">Smart fit</span>
             <p>Treine com estrutura completa e acompanhe sua evolução.</p>
             <div className="redes">
               <a href="#">IG</a>
